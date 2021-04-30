@@ -1,68 +1,131 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-class Square extends React.Component {
-    render() {
-      return (
-        <button className="square">
-          {/* TODO */}
-        </button>
-      );
+// class Square extends React.Component {
+//   // constructor(porps) {
+//   //   super(porps);
+//   //   this.state = {
+//   //     value: null
+//   //   };
+//   // }
+//   render() {
+//     // console.log("Bowen: Square -> render -> this.props", this.props);
+//     return (
+//       <button 
+//         className="square" 
+//         onClick={e => this.props.onClick()}
+//       >
+//         {this.props.value}
+//       </button>
+//     );
+//   }
+// }
+// Fuction Components
+function Square(props){
+  return (
+    <button 
+      className="square" 
+      onClick={e => props.onClick() }
+    >
+      { props.value }
+    </button>
+  )
+}
+class Board extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      squareStates: Array.from({ length: 9 },() => null),
+      nextIsX: true,
+      winner: null
     }
+    
   }
-  
-  class Board extends React.Component {
-    renderSquare(i) {
-      return <Square />;
+  handleSquareClick(i){
+    const squareStates = this.state.squareStates.slice();
+    if (this.state.winner|| squareStates[i]) {
+      return
     }
-  
-    render() {
-      const status = 'Next player: X';
-  
-      return (
-        <div className="board">
-          <div className="status">{status}</div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+    squareStates[i] = this.state.nextIsX ? 'X':'O';
+    this.setState({ 
+      squareStates,
+      nextIsX: !this.state.nextIsX,
+      winner: this.calculateWinner(squareStates)
+    })
+  } 
+  calculateWinner(squares){
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ]
+    let key = null
+    for (const line of lines) {
+      const [a, b, c] = line
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        key = squares[a]
+      }
+    }
+    return key
+  }
+  renderSquare(i) {
+    return (
+      <Square 
+        value={this.state.squareStates[i]} 
+        onClick={()=>this.handleSquareClick(i)} 
+      />
+    )
+  }
+  render() {
+    const status = this.state.winner ? 
+    `Winner is ${this.state.winner}`:
+    `Next player: ${ this.state.nextIsX ? 'X':'O' }`;
+
+    return (
+      <div className="board">
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
-      );
-    }
-  }
-  
-  class Game extends React.Component {
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
-      );
-    }
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
   }
-  
-  // ========================================
-  
-  ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-  );
-  
+}
+
+class Game extends React.Component {
+  render() {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board onChangeWinner={(winner)=>this.hendleChangeWinner(winner)  } />
+        </div>
+        <div className="game-info">
+          <div>{ /* status */ }</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+// ========================================
+
+ReactDOM.render(<Game />, document.getElementById("root"));
