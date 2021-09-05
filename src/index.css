@@ -48,4 +48,10 @@ body {
   .game-info {
     margin-left: 20px;
   }
+  .comment-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    
+  }
   

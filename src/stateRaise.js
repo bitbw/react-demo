@@ -2,8 +2,8 @@
  * @Description: 状态提升
  * @Autor: Bowen
  * @Date: 2021-09-02 16:58:40
- * @LastEditors: Bowen
- * @LastEditTime: 2021-09-02 17:55:42
+ * @LastEditors: zhangbowen
+ * @LastEditTime: 2021-09-05 13:50:44
  */
 import React from "react";
 function BoilingVerdict(props) {
@@ -36,7 +36,7 @@ export class TemperatureInput extends React.Component {
 
   handleChange(e) {
     // this.setState({ temperature: e.target.value });
-    this.state.temperature = 66666;
+    // this.state.temperature = 66666;
   }
 
   render() {
