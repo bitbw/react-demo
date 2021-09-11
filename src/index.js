@@ -11,6 +11,7 @@ import Lifecycle from "./组件进阶/生命周期";
 import RenderProp from "./组件进阶/renderProp和高阶组件/renderProp模式"
 import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶组件"
 import PureComponentTest from "./react原理和优化/纯组件";
+import StateTest from "./react原理和优化/setState"
 
 
 // ReactDOM.render(<Game />, document.querySelector(".game-container"));
@@ -37,8 +38,9 @@ function Container() {
       <PropTest obj={obj}/>
       <Lifecycle/>
       <RenderProp />
-      <HighOrderComponent/>*/}
-      <PureComponentTest />
+      <HighOrderComponent/>
+      <PureComponentTest />*/}
+      <StateTest/>
     </div>
   );
 }
