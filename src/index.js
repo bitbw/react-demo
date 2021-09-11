@@ -12,6 +12,8 @@ import RenderProp from "./组件进阶/renderProp和高阶组件/renderProp模�
 import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶组件"
 import PureComponentTest from "./react原理和优化/纯组件";
 import StateTest from "./react原理和优化/setState"
+import FilterableProductTable, { PRODUCTS } from "./searchTable";
+import RouterTest from "./react-router";
 
 
 // ReactDOM.render(<Game />, document.querySelector(".game-container"));
@@ -39,8 +41,11 @@ function Container() {
       <Lifecycle/>
       <RenderProp />
       <HighOrderComponent/>
-      <PureComponentTest />*/}
+      <PureComponentTest />
       <StateTest/>
+      <PureComponentTest />
+      <FilterableProductTable products={ PRODUCTS }/>*/}
+      <RouterTest/>
     </div>
   );
 }
