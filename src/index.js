@@ -8,25 +8,24 @@ import { Calculator } from "./stateRaise";
 import { Comment } from "./comment";
 import PropTest from "./组件进阶/propTypes";
 import Lifecycle from "./组件进阶/生命周期";
-import RenderProp from "./组件进阶/renderProp和高阶组件/renderProp模式"
-import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶组件"
+import RenderProp from "./组件进阶/renderProp和高阶组件/renderProp模式";
+import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶组件";
 import PureComponentTest from "./react原理和优化/纯组件";
 import FilterableProductTable, { PRODUCTS } from "./searchTable";
 import RouterTest from "./react-router";
 
+import Todos from "./todos";
 
 // ReactDOM.render(<Game />, document.querySelector(".game-container"));
 
 // // ========================================
 
-
-
 function Container() {
   const obj = {
     test: <Calculator />,
     name: "test",
-    age: 15
-  }
+    age: 15,
+  };
   return (
     <div id="container">
       {/* <div className="game-container"><Game /></div>
@@ -41,8 +40,9 @@ function Container() {
       <RenderProp />
       <HighOrderComponent/>
       <PureComponentTest />
-      <FilterableProductTable products={ PRODUCTS }/>*/}
-      <RouterTest/>
+      <FilterableProductTable products={ PRODUCTS }/>
+      <RouterTest/>*/}
+      <Todos />
     </div>
   );
 }
