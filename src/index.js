@@ -13,6 +13,8 @@ import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶�
 import PureComponentTest from "./react原理和优化/纯组件";
 import FilterableProductTable, { PRODUCTS } from "./searchTable";
 import RouterTest from "./react-router";
+import ProxyTest from "./代理/proxy";
+import GithubQuery from "./github案例";
 
 import Todos from "./todos";
 
@@ -41,8 +43,10 @@ function Container() {
       <HighOrderComponent/>
       <PureComponentTest />
       <FilterableProductTable products={ PRODUCTS }/>
-      <RouterTest/>*/}
+      <RouterTest/>
       <Todos />
+      <ProxyTest/>*/}
+      <GithubQuery/>
     </div>
   );
 }
