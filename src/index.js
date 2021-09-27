@@ -13,6 +13,7 @@ import HighOrderComponent from "./组件进阶/renderProp和高阶组件/高阶�
 import PureComponentTest from "./react原理和优化/纯组件";
 import FilterableProductTable, { PRODUCTS } from "./searchTable";
 import RouterTest from "./react-router";
+import AtguiguRouter from "./react-router/atguigu-router";
 import ProxyTest from "./代理/proxy";
 import GithubQuery from "./github案例";
 
@@ -45,8 +46,9 @@ function Container() {
       <FilterableProductTable products={ PRODUCTS }/>
       <RouterTest/>
       <Todos />
-      <ProxyTest/>*/}
-      <GithubQuery/>
+      <ProxyTest/>
+      <GithubQuery/>*/}
+      <AtguiguRouter/>
     </div>
   );
 }
