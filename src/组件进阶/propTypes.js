@@ -1,13 +1,13 @@
 /*
  * @Description: PropTypes
- * @LastEditors: zhangbowen
- * @LastEditTime: 2021-09-05 15:46:23
+ * @LastEditors: Bowen
+ * @LastEditTime: 2021-10-08 14:01:33
  */
 import React from 'react'
 
 import PropTypes from 'prop-types';
 
-import { Calculator } from '../stateRaise'
+import { Calculator } from '../components/stateRaise'
 
 class Test extends React.Component {
     constructor(props) {
