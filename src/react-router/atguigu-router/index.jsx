@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import MyNavLink from "../../components/NavLink";
 import About from "./About";
 import Home from "./Home";
+import Header from "./Header";
+import "./index.css";
 export default class AtguiguRouter extends Component {
   render() {
     return (
@@ -12,6 +14,7 @@ export default class AtguiguRouter extends Component {
             <div className="col-xs-offset-2 col-xs-8">
               <div className="page-header">
                 <h2>React Router Demo</h2>
+                <Header />
               </div>
             </div>
           </div>

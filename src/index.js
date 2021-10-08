@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "./index.less"
 import "@mdi/font/css/materialdesignicons.min.css";
 import { NameForm, EssayForm, FlavorForm, Reservation } from "./form";
 import { Game } from "./game";
@@ -16,8 +17,11 @@ import RouterTest from "./react-router";
 import AtguiguRouter from "./react-router/atguigu-router";
 import ProxyTest from "./代理/proxy";
 import GithubQuery from "./github案例";
-
 import Todos from "./todos";
+
+import { DatePicker } from 'antd';
+import { Button } from 'antd';
+
 
 // ReactDOM.render(<Game />, document.querySelector(".game-container"));
 
@@ -30,7 +34,7 @@ function Container() {
     age: 15,
   };
   return (
-    <div id="container">
+    <div className="App">
       {/* <div className="game-container"><Game /></div>
       <NameForm></NameForm>
       <EssayForm></EssayForm>
@@ -49,6 +53,8 @@ function Container() {
       <ProxyTest/>
       <GithubQuery/>*/}
       <AtguiguRouter/>
+      <DatePicker/>
+      <Button type="primary">Button</Button>
     </div>
   );
 }
