@@ -1,7 +1,7 @@
 //引入Count的UI组件
 import CountUI from "../components/Count";
 //引入action
-import { createIncrement, createDecrement, createIncrementAsync } from "../../redux/count_action";
+import { createIncrement, createDecrement, createIncrementAsync } from "../../redux/actions/count";
 //引入connect用于连接UI组件与redux
 import { connect } from "react-redux";
 /* 

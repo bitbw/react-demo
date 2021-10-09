@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 //引入action
-import { createIncrement, createDecrement, createIncrementAsync } from "../../redux/count_action";
+import { createIncrement, createDecrement, createIncrementAsync } from "../../redux/actions/count";
 //引入connect用于连接UI组件与redux
 import { connect } from "react-redux";
 const options = [1, 2, 3];
@@ -28,10 +28,11 @@ class Count extends Component {
   incrementAsync = () => this.props.incrementAsync(this.select.value, 500);
 
   render() {
-    const { count } = this.props;
+    const { count, personCount } = this.props;
     console.log("Bowen: Count -> render -> this.props", this.props);
     return (
       <div>
+        <h2> personCount为：{personCount}</h2>
         <h2> 当前求和为：{count}</h2>
         <select ref={(r) => (this.select = r)}>
           {options.map((item) => (
@@ -64,7 +65,7 @@ class Count extends Component {
 
 //使用connect()()创建并暴露一个Count的容器组件
 export default connect(
-  (state) => ({ count: state }),
+  (state) => ({ count: state.count, personCount: state.persons.length }),
 
   //mapDispatchToProps的一般写法
   // (dispatch) => ({
