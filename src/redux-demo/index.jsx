@@ -5,7 +5,6 @@ export default class index extends Component {
   render() {
     return (
       <div>
-        {/* 给容器组件传递store */}
         <Count />
         <hr></hr>
         <Preson />

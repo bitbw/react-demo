@@ -6,8 +6,6 @@
 import { ADD_PERSON } from "../constant";
 const initstate = [{ id: "test", name: "test", age: 10 }];
 export default function reducer(preState = initstate, action) {
-  console.log("Bowen: reducer -> action", action)
-  console.log("Bowen: reducer -> preState", preState)
   const { type, data } = action;
   switch (type) {
     case ADD_PERSON:
