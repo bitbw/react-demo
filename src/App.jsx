@@ -34,6 +34,8 @@ import "@mdi/font/css/materialdesignicons.min.css";
 // react扩展
 import LazyLoad from "./react扩展/lazyLoad/index";
 import HooksTest from "./react扩展/hooks/index";
+import ContextTest from "./react扩展/context";
+import Design from "./react设计模式";
 // const obj = {
 //   test: <Calculator />,
 //   name: "test",
@@ -70,8 +72,10 @@ export default class App extends Component {
         <DatePicker/>
         <Button type="primary">Button</Button>
         <ReduxDemo />
-        <LazyLoad />*/}
+        <LazyLoad />
         <HooksTest />
+        <Design />*/}
+        <ContextTest />
       </div>
     );
   }
