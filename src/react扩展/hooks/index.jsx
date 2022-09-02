@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,Fragment } from "react";
+import React, { useState, useEffect, useRef, Fragment, useMemo } from "react";
 /*
 1. React Hook/Hooks是什么?
 (1). Hook是React 16.8.0版本增加的新特性/新语法
@@ -10,7 +10,7 @@ import React, { useState, useEffect ,Fragment } from "react";
  */
 // useState
 function UseStateTest({ status }) {
-  console.log("Bowen: UseStateTest -> status", status)
+  console.log("Bowen: UseStateTest -> status", status);
   // useState 接收 initState 返回数组 [0] = state, [1] = setState
   const [count, setCount] = useState(0);
   const handleClick = () => {
@@ -22,10 +22,12 @@ function UseStateTest({ status }) {
   };
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    console.log("---- UseStateTest ---- componentDidMount and componentDidUpdate");
+    console.log(
+      "---- UseStateTest ---- componentDidMount and componentDidUpdate"
+    );
     document.title = `You clicked ${count} times`;
     // 监听 count 变化才调用
-  },[count]);
+  }, [count]);
 
   return (
     <div>
@@ -77,14 +79,64 @@ function UseEffecTest() {
     </div>
   );
 }
+
+// useRef
+/*
+1. ref 只能用在 dom 上无法用于 组件上
+2. useRef(null).current 指向元素
+*/
+
+function UseRefTest() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` 指向已挂载到 DOM 上的文本输入元素
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" className="inputEl" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+// useMemo
+/* 
+把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。
+这种优化有助于避免在每次渲染时都进行高开销的计算。
+useMemo 相当于 compute + watch
+*/
+function UseMemoTest() {
+  let [a, seta] = useState(0);
+  let [b, setb] = useState(0);
+  let [c, setc] = useState(0);
+  const memoizedValue = useMemo(() => {
+    console.log("useMemo");
+    setc(() => a + b);
+    return a + b;
+  }, [a, b]);
+  return (
+    <>
+      <div>a=== {a}</div>
+      <div>b=== {b}</div>
+      <div>c=== {c}</div>
+      <div>memoizedValue=== {memoizedValue}</div>
+      <button onClick={() => seta((a) => ++a)}>a++</button>
+      <button onClick={() => setb((b) => ++b)}>b++</button>
+    </>
+  );
+}
+
 export default function HooksTest() {
   const [status, setStatus] = useState(true);
   return (
     <Fragment>
+      <UseMemoTest></UseMemoTest>
+      <hr></hr>
       <UseStateTest status={status} />
       <hr></hr>
       {status ? <UseEffecTest /> : ""}
       <button onClick={() => setStatus((s) => !s)}>切换组件</button>
+      <UseRefTest />
     </Fragment>
   );
 }

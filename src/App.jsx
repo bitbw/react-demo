@@ -73,9 +73,10 @@ export default class App extends Component {
         <Button type="primary">Button</Button>
         <ReduxDemo />
         <LazyLoad />
+       
+        <Design />
+        <ContextTest />*/}
         <HooksTest />
-        <Design />*/}
-        <ContextTest />
       </div>
     );
   }
